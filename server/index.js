@@ -3,6 +3,7 @@ const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
 const User = require('./models/user.model')
+const jwt = require('jsonwebtoken')
 
 app.use(cors())
 app.use(express.json()) //tells express that we need to parse anything that we get in the body to a JSON
@@ -46,11 +47,15 @@ app.post('/api/login', async (req, res) => {
         password: req.body.password,
     })
     if (user) {
-        // const token = jwt.sign({
-        //     name: req.body.name,
-        //     email: req.body.email,
-        // }, 'secret123')
-        return res.json({ status: 'ok', user: true })
+        const token = jwt.sign(
+            {
+                name: user.name,
+                email: user.email,
+            },
+            'secret123'
+            )
+
+        return res.json({ status: 'ok', user: token})
     } else {
         return res.json({ status: 'error', user: false })
     }
