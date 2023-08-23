@@ -22,6 +22,9 @@ function App() {
 
     const data= await response.json()
     console.log(data)
+    if(data.staus ==='ok'){
+        window.location.href='/login'
+      }
   }
 
   return (
