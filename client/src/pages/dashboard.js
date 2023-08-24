@@ -61,18 +61,18 @@ const Dashboard = () => {
     }
 
     return (
-        <div>
-            <h1>Your video : {video || 'No video found'}</h1>
-            <form onSubmit={updateVideo}>
-                <input
-                    type="text"
-                    placeholder="Video"
-                    value={tempVideo}
-                    onChange={(e) => setTempVideo(e.target.value)}
-                />
-                <input type="submit" value="Update Video" />
-            </form>
-        </div>
+        <div> 
+        <h1>Your video : {video || 'No video found'}</h1>
+        <form onSubmit={updateVideo}>
+            <input 
+                type="text" 
+                placeholder="Video" 
+                value={tempVideo} 
+                onChange={(e)=>setTempVideo(e.target.value)}
+            />
+            <input type="submit" value="Update Video"/>
+        </form>
+    </div>
     )
 }
 

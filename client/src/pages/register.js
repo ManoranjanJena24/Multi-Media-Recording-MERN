@@ -2,10 +2,6 @@ import React, { useState } from 'react';
 import './Register.css'; // Import the external CSS file
 
 function Register() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-function Register() {
   const [name,setName]=useState('')
   const [email,setEmail]=useState('')
   const [password,setPassword]=useState('')
