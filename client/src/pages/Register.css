@@ -1,0 +1,18 @@
+/* Register.css */
+.container {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.input-field {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.submit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
