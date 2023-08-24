@@ -53,12 +53,49 @@ app.post('/api/login', async (req, res) => {
                 email: user.email,
             },
             'secret123'
-            )
+        )
 
-        return res.json({ status: 'ok', user: token})
+        return res.json({ status: 'ok', user: token })
     } else {
         return res.json({ status: 'error', user: false })
     }
+})
+
+app.get('/api/video', async (req, res) => {
+
+    const token = req.headers['x-access-token']
+
+    try {
+        const decoded = jwt.verify(token, 'secret123')
+        const email = decoded.email
+        const user = await User.findOne({ email: email })
+        return res.json({ status: 'ok', quote: user.video })
+    }
+    catch (error) {
+        console.log(error)
+        res.json({ status: 'error', error: 'invalid token' })
+    }
+
+})
+
+app.post('/api/video', async (req, res) => {
+
+    const token = req.headers['x-access-token']
+
+    try {
+        const decoded = jwt.verify(token, 'secret123')
+        const email = decoded.email
+        await User.updateOne(
+            { email: email },
+             {$set: { video: req.body.video} }
+        )
+        return res.json({ status: 'ok' })
+    }
+    catch (error) {
+        console.log(error)
+        res.json({ status: 'error', error: 'invalid token' })
+    }
+
 })
 
 app.listen(3001, () => {
