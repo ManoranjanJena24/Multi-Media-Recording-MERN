@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function App() {
+function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -22,9 +22,9 @@ function App() {
 
     if (data.user) {
       alert('Login successful')
-      localStorage.setItem('token',data.user)
+      localStorage.setItem('token', data.user)
       //after successful login, change the route
-      window.location.href='/dashboard'
+      window.location.href = '/dashboard'
     } else {
       alert('Invalid username or password')
 
@@ -56,4 +56,4 @@ function App() {
   </div>
 }
 
-export default App;
+export default Login;

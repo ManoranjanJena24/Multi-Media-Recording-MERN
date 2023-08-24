@@ -1,61 +1,67 @@
-import { useState } from 'react'
+import React, { useState } from 'react';
+import './Register.css'; // Import the external CSS file
 
-function App() {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+function Register() {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-  async function registerUser(event) {  //this is the first time when our FE will connect with the BE 
-    event.preventDefault()
+    async function registerUser(event) {
+        event.preventDefault();
 
-    const response = await fetch('http://localhost:3001/api/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        password,
-      }),
-    })
+        const response = await fetch('http://localhost:3001/api/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name,
+                email,
+                password,
+            }),
+        });
 
-    const data = await response.json()
-    console.log(data)
-    if (data.status === 'ok') {
-      window.location.href = '/login'
+        const data = await response.json();
+        console.log(data);
+        if (data.status === 'ok') {
+            window.location.href = '/login';
+        } else {
+            alert(data.error);
+        }
     }
-  }
 
-  return (
-    <div>
-      <h1>Register</h1>
-      <form onSubmit={registerUser}>
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          type="text"
-          placeholder="Name"
-        />
-        <br />
-        <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          type="email"
-          placeholder="Email"
-        />
-        <br />
-        <input
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          type="password"
-          placeholder="Password"
-        />
-        <br />
-        <input type="submit" value="Register" />
-      </form>
-    </div>
-  )
+    return (
+        <div className="container">
+            <h1>Register</h1>
+            <form onSubmit={registerUser}>
+                <input
+                    className="input-field"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    type="text"
+                    placeholder="Name"
+                />
+                <br />
+                <input
+                    className="input-field"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    type="email"
+                    placeholder="Email"
+                />
+                <br />
+                <input
+                    className="input-field"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    type="password"
+                    placeholder="Password"
+                />
+                <br />
+                <input className="submit-button" type="submit" value="Register" />
+            </form>
+        </div>
+    );
 }
 
-export default App;
+export default Register;
