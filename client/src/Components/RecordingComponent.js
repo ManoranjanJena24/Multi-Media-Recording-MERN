@@ -11,6 +11,7 @@ const RecordingComponent = () => {
     const mediaRecorderRef = useRef(null);
     const recordedChunksRef = useRef([]);
     const videoRef = useRef(null);
+    const [downloadUrl, setDownloadUrl] = useState(null);
 
     const handleStartRecording = async () => {
         try {
@@ -35,11 +36,7 @@ const RecordingComponent = () => {
             mediaRecorder.onstop = () => {
                 const blob = new Blob(recordedChunksRef.current, { type: 'video/webm' });
                 const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'recording.webm';
-                a.click();
-                recordedChunksRef.current = [];
+                setDownloadUrl(url);
             };
 
             setIsRecording(true);
@@ -55,28 +52,40 @@ const RecordingComponent = () => {
             if (audioStream) audioStream.getTracks().forEach(track => track.stop());
             if (screenStream) screenStream.getTracks().forEach(track => track.stop());
             setIsRecording(false);
-            setAudioStream(null);
-            setScreenStream(null);
-            setVideoStream(null);
+        }
+    };
+
+    const handleDownload = () => {
+        if (downloadUrl) {
+            const a = document.createElement('a');
+            a.href = downloadUrl;
+            a.download = 'recording.webm';
+            a.click();
         }
     };
 
     return (
         <div className="recording-container">
+            <h2>Screen Recording with Audio</h2>
             {!isRecording ? (
                 <button className="recording-button" onClick={handleStartRecording}>
                     <FontAwesomeIcon icon={faMicrophone} /> Start Recording
                 </button>
             ) : (
                 <>
-                    <video ref={videoRef} autoPlay muted controls className="video-display" />
                     <button className="recording-button" onClick={handleStopRecording}>
                         <FontAwesomeIcon icon={faStop} /> Stop Recording
                     </button>
                 </>
+            )}
+            {downloadUrl && (
+               <button className="recording-button" onClick={handleDownload}>
+               Download
+           </button>
             )}
         </div>
     );
 };
 
 export default RecordingComponent;
+

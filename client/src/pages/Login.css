@@ -1,4 +1,4 @@
-/* Register.css */
+/* Login.css */
 .container {
     text-align: center;
     margin-top: 100px;
@@ -15,5 +15,4 @@
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    border-radius: 10px;
 }

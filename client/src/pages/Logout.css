@@ -4,10 +4,7 @@
     margin-top: 100px;
 }
 
-.input-field {
-    margin-bottom: 10px;
-    padding: 5px;
-}
+
 
 .submit-button {
     background-color: #007bff;
@@ -16,4 +13,6 @@
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 10px;
+    margin-bottom: 10px;
+
 }

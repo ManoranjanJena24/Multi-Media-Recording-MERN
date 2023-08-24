@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Register.css'; // Import the external CSS file
+import { Link } from 'react-router-dom';
 
 function Register() {
   const [name,setName]=useState('')
@@ -59,6 +60,8 @@ function Register() {
                 />
                 <br />
                 <input className="submit-button" type="submit" value="Register" />
+                <br />
+                <p>Already have an account? <Link to="/login">Login instead</Link>.</p>
             </form>
         </div>
     );
