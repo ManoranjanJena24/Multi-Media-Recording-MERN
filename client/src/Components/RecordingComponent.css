@@ -1,0 +1,36 @@
+/* RecordingComponent.css */
+
+.recording-container {
+    text-align: center;
+    margin: 20px;
+    border: 5px solid #cccccc;
+    padding: 10px;
+    border-radius: 50px;
+}
+
+.recording-container:hover {
+    border-color: #007bff;
+    background-color: rgb(152, 195, 188);
+}
+
+.recording-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.recording-button:hover {
+    background-color: #0056b3;
+}
+
+.recording-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.video-display {
+    width: 100%;
+}

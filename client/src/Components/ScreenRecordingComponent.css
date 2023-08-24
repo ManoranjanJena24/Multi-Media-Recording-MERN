@@ -1,0 +1,45 @@
+/* ScreenRecordingComponent.css */
+
+.screen-recording-container {
+    text-align: center;
+    margin: 20px;
+    border: 5px solid #ccc;
+    padding: 10px;
+    border-radius: 50px;
+}
+
+.screen-recording-container:hover {
+    border-color: #007bff;
+    background-color: rgb(152, 195, 188);
+}
+
+.recording-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.recording-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.toggle-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.toggle-button.active {
+    background-color: #28a745;
+}
+
+.toggle-button.inactive {
+    background-color: #dc3545;
+}

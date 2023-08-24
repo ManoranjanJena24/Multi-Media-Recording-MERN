@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 // const jwt = require('jwt-decode');
 import jwt_decode from 'jwt-decode';
+import AudioRecordingComponent from '../Components/AudioRecordingComponent'
+import RecordingComponent from '../Components/RecordingComponent'
+import VideoRecordingComponent from '../Components/VideoRecordingComponent'
+import ScreenRecordingComponent from '../Components/ScreenRecordingComponent'
+
 
 const Dashboard = () => {
     const [video, setVideo] = useState('')
@@ -61,18 +66,14 @@ const Dashboard = () => {
     }
 
     return (
-        <div> 
-        <h1>Your video : {video || 'No video found'}</h1>
-        <form onSubmit={updateVideo}>
-            <input 
-                type="text" 
-                placeholder="Video" 
-                value={tempVideo} 
-                onChange={(e)=>setTempVideo(e.target.value)}
-            />
-            <input type="submit" value="Update Video"/>
-        </form>
-    </div>
+        <div>
+            <RecordingComponent />
+            <AudioRecordingComponent />
+            <VideoRecordingComponent />
+            <ScreenRecordingComponent />
+
+
+        </div>
     )
 }
 
