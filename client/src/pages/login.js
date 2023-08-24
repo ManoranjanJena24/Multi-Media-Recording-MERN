@@ -6,7 +6,7 @@ function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  async function loginUser(event) {  //this is the first time when our FE will connect with the BE 
+  async function loginUser(event) {   
     event.preventDefault()
 
     const response = await fetch('http://localhost:3001/api/login', {

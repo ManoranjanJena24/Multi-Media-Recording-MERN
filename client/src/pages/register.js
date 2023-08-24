@@ -10,8 +10,8 @@ function Register() {
     async function registerUser(event) {
         event.preventDefault();
 
-        const response = await fetch('http://localhost:3001/api/register', {
-            method: 'POST',
+        const response = await fetch('http://localhost:3001/api/register', {  //this is the first time when our FE will connect with the BE
+            method: 'POST',  
             headers: {
                 'Content-Type': 'application/json',
             },
