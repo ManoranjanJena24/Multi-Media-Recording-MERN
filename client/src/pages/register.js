@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-function App() {
+function Register() {
   const [name,setName]=useState('')
   const [email,setEmail]=useState('')
   const [password,setPassword]=useState('')
@@ -22,7 +22,7 @@ function App() {
 
     const data= await response.json()
     console.log(data)
-    if(data.staus ==='ok'){
+    if(data.status ==='ok'){
         window.location.href='/login'
       }
   }
@@ -58,4 +58,4 @@ function App() {
   )
 }
 
-export default App;
+export default Register;
